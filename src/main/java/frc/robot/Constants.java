@@ -17,5 +17,7 @@ package frc.robot;
  */
 public final class Constants {
     public static final int MOTOR_PORT = 1;
+    public final int LEFT_TALON = 2;
+    public final int RIGHT_TALON = 3;
     public Constants(){}
 }
