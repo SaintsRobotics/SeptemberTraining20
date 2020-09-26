@@ -21,8 +21,8 @@ public class TestSubsytem extends SubsystemBase {
   private Talon rightTalon;
   private SpeedControllerGroup talons;
   public TestSubsytem(Constants constants) {
-    leftTalon = new Talon(constants.LeftTalon);
-    rightTalon = new Talon(constants.RightTalon);
+    leftTalon = new Talon(constants.LEFT_TALON);
+    rightTalon = new Talon(constants.RIGHT_TALON);
     rightTalon.setInverted(true);
     talons = new SpeedControllerGroup(leftTalon, rightTalon);
     
