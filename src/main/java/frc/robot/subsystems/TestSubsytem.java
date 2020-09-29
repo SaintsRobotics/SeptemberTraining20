@@ -20,6 +20,7 @@ public class TestSubsytem extends SubsystemBase {
   private Talon leftTalon;
   private Talon rightTalon;
   private SpeedControllerGroup talons;
+
   public TestSubsytem(Constants constants) {
     leftTalon = new Talon(constants.LEFT_TALON);
     rightTalon = new Talon(constants.RIGHT_TALON);
