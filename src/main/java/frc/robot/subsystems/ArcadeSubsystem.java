@@ -71,8 +71,8 @@ public class ArcadeSubsystem extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    
-    
-  
+    int maxSpeed = 1;
+    leftFrontCanSparkMax.set(mecanumDriveWheelSpeeds.frontLeftMetersPerSecond / maxSpeed);
+      
   }
 }
