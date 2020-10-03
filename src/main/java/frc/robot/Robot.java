@@ -8,10 +8,14 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.ExampleCommand;
+import frc.robot.commands.TurnOffShooter;
+import frc.robot.commands.TurnOnShooter;
 import frc.robot.subsystems.DriveSubsystem;
+import frc.robot.subsystems.ShooterSubsystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -23,6 +27,8 @@ public class Robot extends TimedRobot {
   private ExampleCommand m_Command;
   private DriveSubsystem m_subsystem;
   private RobotContainer m_robotContainer;
+  private ShooterSubsystem m_shooterSubsystem;
+  private Constants constants;
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -33,7 +39,10 @@ public class Robot extends TimedRobot {
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
-    m_subsystem = new DriveSubsystem(new Constants());
+    m_subsystem = new DriveSubsystem(constants);
+    m_shooterSubsystem = new ShooterSubsystem(constants);
+
+    configureButtonBindings();
   }
 
   /**
@@ -106,5 +115,13 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void testPeriodic() {
+  }
+  private void configureButtonBindings() {
+    XboxController controller = new XboxController(0);
+    JoystickButton turnOnShotterButton = new JoystickButton(controller, 1);
+    turnOnShotterButton.whenPressed(new TurnOnShooter(m_shooterSubsystem));
+
+    JoystickButton turnOffShotterButton = new JoystickButton(controller, 2);
+    turnOnShotterButton.whenPressed(new TurnOffShooter(m_shooterSubsystem));
   }
 }
