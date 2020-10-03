@@ -7,37 +7,29 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.ArcadeSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 
-public class MecanumCommand extends CommandBase {
+public class TurnOnShooter extends CommandBase {
   /**
-   * Creates a new MecanumCommand.
+   * Creates a new TurnOnShooter.
    */
   private ShooterSubsystem m_subsystem;
-  private XboxController m_controller;
-
-  public MecanumCommand(ShooterSubsystem subsystem, XboxController controller) {
+  public TurnOnShooter(ShooterSubsystem subsystem) {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(subsystem);
     m_subsystem = subsystem;
-    m_controller = controller;
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    
-
+    m_subsystem.setSpeed(1);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_subsystem.setSpeed(m_controller.getTriggerAxis(Hand.kLeft));
   }
 
   // Called once the command ends or is interrupted.
@@ -48,6 +40,6 @@ public class MecanumCommand extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return true;
   }
 }
