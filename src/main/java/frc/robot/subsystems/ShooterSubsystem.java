@@ -12,16 +12,16 @@ import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
-public class TestSubsytem extends SubsystemBase {
+public class ShooterSubsystem extends SubsystemBase {
   /**
-   * Creates a new TestSubsytem.
+   * Creates a new ShooterSubsytem.
    */
   private double m_speed;
   private Talon leftTalon;
   private Talon rightTalon;
   private SpeedControllerGroup talons;
 
-  public TestSubsytem(Constants constants) {
+  public ShooterSubsystem(Constants constants) {
     leftTalon = new Talon(constants.LEFT_TALON);
     rightTalon = new Talon(constants.RIGHT_TALON);
     rightTalon.setInverted(true);
